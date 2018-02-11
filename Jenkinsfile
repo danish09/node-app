@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'vireshdoshi/jen-build-node-app-aws:latest'
+      image 'vireshdoshi/jen-build-node-app-aws:1'
     }
   }
   stages {
