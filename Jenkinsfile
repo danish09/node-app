@@ -23,7 +23,7 @@ pipeline {
       steps {
           withCredentials([
             usernamePassword(credentialsId: 'AWS_ACCESS_ID', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY'),
-            usernamePassword(credentialsId: '2facaea2-613b-4f34-9fb7-1dc2daf25c45', passwordVariable: 'REPO_PASS', usernameVariable: 'REPO_USER'),
+            usernamePassword(credentialsId: 'GIT_ACCESS_ID', passwordVariable: 'REPO_PASS', usernameVariable: 'REPO_USER'),
           ]) {
             sh 'rm -rf node-app-terraform'
             sh 'git clone https://github.com/goforgold/node-app-terraform.git'
@@ -32,8 +32,8 @@ pipeline {
                terraform init
                terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
                git add terraform.tfstate
-               git -c user.name="Shashwat Tripathi" -c user.email="shashwat2691@gmail.com" commit -m "terraform state update from Jenkins"
-               git push https://${REPO_USER}:${REPO_PASS}@github.com/goforgold/node-app-terraform.git master
+               git -c user.name="Viresh Doshi" -c user.email="vireshdoshi@time2test.co.uk" commit -m "terraform state update from Jenkins"
+               git push https://${REPO_USER}:${REPO_PASS}@github.com/vireshdoshi/node-app-terraform.git master
             '''
         }
       }
